@@ -46,13 +46,14 @@ public class ParkingLot {
         for(Floor floor : floors){
             List<Slot> slots = floor.getUnmodifiableSlots();
 
-            if(vehicle.vehicleType.equals(VehicleType.TRUCK)){
+            // implement getter for vehicle type from vehicle
+            if(vehicle.getVehicleType().equals(VehicleType.TRUCK)){
                 if(!slots.get(0).occupied){
                     slots.get(0).occupied = true;
                     slots.get(0).setVehicle(vehicle);
                     return floorId+"_1";
                 }
-            } else if(vehicle.vehicleType.equals(VehicleType.BIKE)){
+            } else if(vehicle.getVehicleType().equals(VehicleType.BIKE)){
                 if(!slots.get(1).occupied){
                     slots.get(1).occupied = true;
                     slots.get(1).setVehicle(vehicle);
@@ -66,7 +67,7 @@ public class ParkingLot {
             }
             for(int i = 3; i< slots.size(); i++){
                 if(!slots.get(i).occupied) {
-                    if (vehicle.vehicleType.equals(VehicleType.CAR)) {
+                    if (vehicle.getVehicleType().equals(VehicleType.CAR)) {
                         slots.get(i).occupied = true;
                         slots.get(i).setVehicle(vehicle);
                         return floorId + "_" + (i + 1);

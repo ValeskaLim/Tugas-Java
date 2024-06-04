@@ -1,25 +1,26 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Floor {
-    List<Slot> slots = new ArrayList<>();
+    private List<Slot> slots = new ArrayList<>();
 
     public Floor(int n){
-        for(int i =0 ; i< n;i++){
+        for(int i = 0;i < n;i++){
             Slot slot = new Slot();
             this.slots.add(slot);
         }
     }
 
-    public List<Slot> getSlots() {
-        return slots;
+    public List<Slot> getUnmodifiableSlots() {
+        return Collections.unmodifiableList(slots);
+    }
+    
+    public void addSlot(Slot slot) {
+    	slots.add(slot);
     }
 
-    public void setSlots(List<Slot> slots) {
-        this.slots = slots;
-    }
-
-    public void addSlot(Slot slot){
-        slots.add(slot);
+    public void removeSlot(Slot slot) {
+    	slots.remove(slot);
     }
 }

@@ -44,7 +44,7 @@ public class ParkingLot {
     public String getTicket(Vehicle vehicle){
         int floorId = 1;
         for(Floor floor : floors){
-            List<Slot> slots = floor.getSlots();
+            List<Slot> slots = floor.getUnmodifiableSlots();
 
             if(vehicle.vehicleType.equals(VehicleType.TRUCK)){
                 if(!slots.get(0).occupied){
@@ -84,7 +84,7 @@ public class ParkingLot {
             int floorNum = Integer.parseInt(ticket[1]);
             int slotNum = Integer.parseInt(ticket[2]);
             System.out.println("floor "+floorNum + " slotNum "+slotNum);
-            Slot slot = floors.get(floorNum-1).slots.get(slotNum-1);
+            Slot slot = floors.get(floorNum-1).getUnmodifiableSlots().get(slotNum-1);
             if(!slot.occupied){
                 System.out.println("Invalid Ticket");
             } else{
@@ -101,7 +101,7 @@ public class ParkingLot {
         int floorId = 1;
         for(Floor floor: floors){
             int freeSlots = 0;
-            List<Slot> slots = floor.getSlots();
+            List<Slot> slots = floor.getUnmodifiableSlots();
 
             if(vehicleType.equals(VehicleType.TRUCK)){
                 if(!slots.get(0).occupied){

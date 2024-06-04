@@ -1,8 +1,7 @@
 public class Slot {
-    Boolean occupied = false;
-    VehicleType vehicleType;
-
-    Vehicle vehicle;
+    private Boolean occupied = false;
+    private VehicleType vehicleType;
+    private Vehicle vehicle;
 
     public Boolean getOccupied() {
         return occupied;

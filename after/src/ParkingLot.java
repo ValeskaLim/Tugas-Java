@@ -48,27 +48,27 @@ public class ParkingLot {
 
             // implement getter for vehicle type from vehicle
             if(vehicle.getVehicleType().equals(VehicleType.TRUCK)){
-                if(!slots.get(0).occupied){
-                    slots.get(0).occupied = true;
+                if(!slots.get(0).getOccupied()){
+                    slots.get(0).setOccupied(true);
                     slots.get(0).setVehicle(vehicle);
                     return floorId+"_1";
                 }
             } else if(vehicle.getVehicleType().equals(VehicleType.BIKE)){
-                if(!slots.get(1).occupied){
-                    slots.get(1).occupied = true;
+                if(!slots.get(1).getOccupied()){
+                    slots.get(1).setOccupied(true);
                     slots.get(1).setVehicle(vehicle);
                     return floorId+"_2";
                 }
-                if(!slots.get(2).occupied){
-                    slots.get(2).occupied = true;
+                if(!slots.get(2).getOccupied()){
+                    slots.get(2).setOccupied(true);
                     slots.get(2).setVehicle(vehicle);
                     return floorId+"_3";
                 }
             }
             for(int i = 3; i< slots.size(); i++){
-                if(!slots.get(i).occupied) {
+                if(!slots.get(i).getOccupied()) {
                     if (vehicle.getVehicleType().equals(VehicleType.CAR)) {
-                        slots.get(i).occupied = true;
+                        slots.get(i).setOccupied(true);
                         slots.get(i).setVehicle(vehicle);
                         return floorId + "_" + (i + 1);
                     }
@@ -86,12 +86,12 @@ public class ParkingLot {
             int slotNum = Integer.parseInt(ticket[2]);
             System.out.println("floor "+floorNum + " slotNum "+slotNum);
             Slot slot = floors.get(floorNum-1).getUnmodifiableSlots().get(slotNum-1);
-            if(!slot.occupied){
+            if(!slot.getOccupied()){
                 System.out.println("Invalid Ticket");
             } else{
-                System.out.println("Unparked Vehicle with Registration Number: "+ slot.vehicle.getRegistrationNumber() +" Color: "+slot.vehicle.getColor());
-                slot.occupied = false;
-                slot.vehicle = null;
+                System.out.println("Unparked Vehicle with Registration Number: "+ slot.getVehicle().getRegistrationNumber() +" Color: "+slot.getVehicle().getColor());
+                slot.setOccupied(false);
+                slot.setVehicle(null);
             }
         }catch (Exception e){
             System.out.println("Invalid Ticket");
@@ -105,19 +105,19 @@ public class ParkingLot {
             List<Slot> slots = floor.getUnmodifiableSlots();
 
             if(vehicleType.equals(VehicleType.TRUCK)){
-                if(!slots.get(0).occupied){
+                if(!slots.get(0).getOccupied()){
                     freeSlots++;
                 }
             } else if(vehicleType.equals(VehicleType.BIKE)){
-                if(!slots.get(1).occupied){
+                if(!slots.get(1).getOccupied()){
                     freeSlots++;
                 }
-                if(!slots.get(2).occupied){
+                if(!slots.get(2).getOccupied()){
                     freeSlots++;
                 }
             }
             for(int i = 3; i< slots.size(); i++){
-                if(!slots.get(i).occupied) {
+                if(!slots.get(i).getOccupied()) {
                     if (vehicleType.equals(VehicleType.CAR)) {
                         freeSlots++;
                     }

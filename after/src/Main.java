@@ -1,18 +1,21 @@
 import java.util.Scanner;
 
 public class Main {
+    private static void displayOption(){
+        System.out.println("1. create_parking_lot [parkingId] [numOfFloor] [numOfSlotPerFloor]");
+        System.out.println("2. park_vehicle [vehicleType] [regNum] [color]");
+        System.out.println("3. unpark_vehicle [parkingTicketNum]");
+        System.out.println("4. display [parkingId]");
+        System.out.println("5. exit");
+        System.out.print("command: ");
+    }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         ParkingLot parkingLot = null;
 
         while (true) {
-            System.out.println("1. create_parking_lot [parkingId] [numOfFloor] [numOfSlotPerFloor]");
-            System.out.println("2. park_vehicle [vehicleType] [regNum] [color]");
-            System.out.println("3. unpark_vehicle [parkingTicketNum]");
-            System.out.println("4. display [parkingId]");
-            System.out.println("5. exit");
-            System.out.print("command: ");
+            displayOption();
             String cmd = sc.nextLine();
             if (cmd.equals("exit")) {
                 break;

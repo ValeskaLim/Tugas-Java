@@ -2,12 +2,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ParkingLot {
-    String parkingLotId;
-    List<Floor> floors;
+    private String parkingLotId;
+    private List<Floor> floors;
 
-    int totalSlots;
+    private int totalSlots;
 
-    int freeSlots;
+    private int freeSlots;
 
     public ParkingLot(int floorsCount, int slotsPerFloor, String parkingLotId){
         floors = new ArrayList<>(floorsCount);

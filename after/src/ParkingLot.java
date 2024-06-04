@@ -5,10 +5,6 @@ public class ParkingLot {
     private String parkingLotId;
     private List<Floor> floors;
 
-    private int totalSlots;
-
-    private int freeSlots;
-
     public ParkingLot(int floorsCount, int slotsPerFloor, String parkingLotId){
         floors = new ArrayList<>(floorsCount);
         for(int i = 0; i < floorsCount; i++){
@@ -17,21 +13,7 @@ public class ParkingLot {
         }
 
         this.parkingLotId = "PR1234";
-        totalSlots = floorsCount * slotsPerFloor;
-        freeSlots = totalSlots;
         System.out.println("Created parkingLot with "+ floorsCount +" floors and "+ slotsPerFloor +" slots per floor");
-    }
-
-    public List<Floor> getFloors() {
-        return floors;
-    }
-
-    public void setFloors(List<Floor> floors) {
-        this.floors = floors;
-    }
-
-    public void addFloor(Floor floor){
-        floors.add(floor);
     }
 
     public String parkVehicle(Vehicle vehicle){
